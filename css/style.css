@@ -1,0 +1,323 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a1a;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #000000;
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.loader {
+    border: 5px solid #333;
+    border-top: 5px solid #4a90e2;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Start Screen */
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 26, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#start-screen h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #4a90e2;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.7);
+}
+
+#start-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+}
+
+#start-button:hover {
+    background-color: #3a7bc8;
+    transform: scale(1.05);
+}
+
+.instructions {
+    max-width: 600px;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.instructions h2 {
+    color: #4a90e2;
+    margin-bottom: 10px;
+}
+
+/* Game UI */
+#game-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 2;
+    display: none;
+}
+
+#score-display, #lives-display {
+    font-size: 1.2em;
+    margin: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+#ai-fact-display {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 1em;
+    display: none;
+}
+
+/* Game Over Screen */
+#game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 26, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    display: none;
+}
+
+#game-over-screen h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #e24a4a;
+}
+
+#final-score {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+#high-score-form {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+}
+
+#leaderboard-form input[type="text"],
+#leaderboard-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.checkbox-container input {
+    margin-right: 10px;
+}
+
+#leaderboard-form button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#leaderboard-form button:hover {
+    background-color: #3a7bc8;
+}
+
+#leaderboard {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+}
+
+#leaderboard h3 {
+    color: #4a90e2;
+    margin-bottom: 10px;
+}
+
+#leaderboard-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+#leaderboard-list li {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+#play-again-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+#play-again-button:hover {
+    background-color: #3a7bc8;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #start-screen h1 {
+        font-size: 2em;
+    }
+    
+    #start-button, #play-again-button {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+    
+    .instructions, #high-score-form, #leaderboard {
+        padding: 10px;
+    }
+    
+    #game-over-screen h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    #start-screen h1 {
+        font-size: 1.8em;
+    }
+    
+    #start-button, #play-again-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    
+    #score-display, #lives-display {
+        font-size: 1em;
+    }
+    
+    #ai-fact-display {
+        font-size: 0.9em;
+    }
+}
+
+/* Fix for loading screen and start screen overlap */
+body.loading #start-screen {
+    display: none !important;
+}
+
+body.game-started #loading-screen {
+    display: none !important;
+}
+
+/* Removed the problematic rule that was keeping the start screen visible */
+/* body.game-started #start-screen {
+    display: flex !important;
+} */
+
+/* Add new rule to hide start screen when game is running */
+body.game-running #start-screen {
+    display: none !important;
+}

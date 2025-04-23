@@ -1,0 +1,51 @@
+/* Simple placeholder images for the game */
+
+/* Player ship - blue triangle */
+.player-ship {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #4a90e2;
+  position: relative;
+}
+
+.player-ship:after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -10px;
+  width: 20px;
+  height: 10px;
+  background-color: #e74c3c;
+}
+
+/* Asteroid - gray polygon */
+.asteroid {
+  width: 50px;
+  height: 50px;
+  background-color: #7f8c8d;
+  clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+}
+
+/* Enemy ship - red triangle */
+.enemy-ship {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 30px solid #e74c3c;
+  position: relative;
+}
+
+/* Power-up - colorful diamond */
+.power-up {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, #f1c40f, #e67e22, #e74c3c, #9b59b6);
+  transform: rotate(45deg);
+}
+
+/* These CSS classes can be used to create simple placeholder graphics
+   for the game if needed. For the actual game, we're using canvas
+   drawing methods to create the game elements. */
